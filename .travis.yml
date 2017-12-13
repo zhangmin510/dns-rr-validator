@@ -4,4 +4,4 @@ node_js:
     - stable
         - "6"
 after_script:
-    - npm run coveralls
+    - npm run cover

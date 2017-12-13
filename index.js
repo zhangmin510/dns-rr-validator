@@ -48,29 +48,57 @@ function isDomainName (name, opts) {
 }
 
 function isFQDN (name) {
+  // TODO: fqdn, punny code
   return true
 }
 
 function isAAAA (ipv6) {
-  return true
+  const ipv6Regex = /^(::)?(((\d{1,3}\.){3}(\d{1,3}){1})?([0-9a-f]){0,4}:{0,2}){1,8}(::)?$/i
+  return ipv6Regex.test(ipv6)
 }
 
 function isA (ipv4) {
-  return true
+  const ip4Regex = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/
+  return ip4Regex.test(ipv4)
 }
 
 function isMX (mx) {
+  if (!mx) {
+    return false
+  }
+
+  const parts = mx.split(/\s+/)
+  if (!/\d/.test(parts[0])) {
+    return false
+  }
+
+  return isDomainName(parts[1])
+}
+
+function isSOA (soa) {
+  if (!soa) {
+    return false
+  }
+  const parts = soa.split(/\s+/)
+
+  for (let i = 0, len = parts.length; i < len; i++) {
+    if (i === 0 || i === 1) {
+      if (!isDomainName(parts[i])) {
+        return false
+      }
+    } else {
+      if (!/\d+/.test(parts[i])) {
+        return false
+      }
+    }
+  }
   return true
 }
 
-function isSOA (mx) {
-  return true
+function isNS (ns) {
+  return isDomainName(ns)
 }
 
-function isNS (mx) {
-  return true
-}
-
-function isCNAME (mx) {
-  return true
+function isCNAME (cname) {
+  return isDomainName(cname)
 }

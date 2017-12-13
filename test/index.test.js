@@ -40,7 +40,7 @@ function test (options) {
 // }
 
 describe('Validators', () => {
-  it('should validate fqdn', () => {
+  it('should validate domain name', () => {
     test({
       validator: 'isDomainName',
       valid: [
@@ -57,6 +57,54 @@ describe('Validators', () => {
         '#2.xx',
         '￥.com',
         '中国.cn'
+      ]
+    })
+  })
+
+  it('should validate SOA', () => {
+    test({
+      validator: 'isSOA',
+      valid: [
+        'ns1.dns.cn-east-1.internal hostmaster.zhangmin.name. 1 7200 1800 86400 60'
+      ],
+      invalid: [
+        'ns1.dns.cn-east-1.internal hostmaster.zhangmin.name. 1 7200 1800 86400 xx'
+      ]
+    })
+  })
+
+  it('should validate A', () => {
+    test({
+      validator: 'isA',
+      valid: [
+        '127.0.0.1'
+      ],
+      invalid: [
+        '256.1.23.257'
+      ]
+    })
+  })
+
+  it('should validate AAAA', () => {
+    test({
+      validator: 'isAAAA',
+      valid: [
+        '::1'
+      ],
+      invalid: [
+        'xxxdd'
+      ]
+    })
+  })
+
+  it('should validate MX', () => {
+    test({
+      validator: 'isMX',
+      valid: [
+        '10 mail.example.com'
+      ],
+      invalid: [
+        'mail.example.com'
       ]
     })
   })
