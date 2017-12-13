@@ -1,0 +1,38 @@
+{
+  "name": "dns-rr-validator",
+  "version": "0.1.0",
+  "description": "dns resource record validator",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint . test",
+    "lint:fix": "eslint --fix . test",
+    "test": "mocha --require intelli-espower-loader --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangmin510/dns-rr-validator.git"
+  },
+  "keywords": [
+    "dns"
+  ],
+  "author": "zhangmin.name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhangmin510/dns-rr-validator/issues"
+  },
+  "homepage": "https://github.com/zhangmin510/dns-rr-validator#readme",
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^4.0.1",
+    "power-assert": "^1.4.4"
+  }
+}
