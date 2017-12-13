@@ -7,6 +7,9 @@
 
 DNS resource record format validation
 
+- [ ] add format of each dns resource record type
+- [ ] add api doc
+- [ ] refine code and test
 
 [npm-image]: https://img.shields.io/npm/v/dns-rr-validator.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/dns-rr-validator
